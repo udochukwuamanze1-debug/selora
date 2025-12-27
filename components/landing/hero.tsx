@@ -14,7 +14,7 @@ export function Hero() {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-700" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8 glass-card p-12 rounded-3xl border-0">
+      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8 glass-card p-12 rounded-3xl">
         {/* Logo/Brand badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card">
           <Shield className="w-5 h-5 text-primary" />
