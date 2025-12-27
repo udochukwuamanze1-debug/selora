@@ -1,63 +1,89 @@
-import { Wallet, FileUp, Shield, Check } from "lucide-react"
+import { Wallet, FileUp, ShieldCheck, User, Gift } from "lucide-react"
 
 const steps = [
   {
     icon: Wallet,
-    title: "Connect Your Sui Wallet",
+    title: "Connect wallet / zkLogin",
     description:
-      "Use any Sui-compatible wallet to create your self-sovereign identity. Your wallet is your healthcare passport.",
+      "Use any Sui-compatible wallet or zkLogin for passwordless authentication. Your identity, your control.",
+    image: "/sui-wallet-connection-interface.jpg",
   },
   {
     icon: FileUp,
-    title: "Upload Your Records",
+    title: "Upload & encrypt records",
     description:
-      "Import existing medical records or have providers upload directly. All data is encrypted and stored on Walrus.",
+      "Import existing medical records or have providers upload directly. All data is encrypted client-side before storage on Walrus.",
+    image: "/encrypted-medical-records-upload.jpg",
   },
   {
-    icon: Shield,
-    title: "Control Access",
+    icon: ShieldCheck,
+    title: "Choose how data is used",
     description:
-      "Grant and revoke access permissions to doctors, labs, and insurers. You decide who sees your data and when.",
+      "Set granular permissions for doctors, labs, insurers, and researchers. Revoke access anytime with one click.",
+    image: "/data-permission-control-dashboard.jpg",
   },
   {
-    icon: Check,
-    title: "Share Securely",
-    description: "Use zero-knowledge proofs to verify health conditions without revealing sensitive medical details.",
+    icon: User,
+    title: "Mint Selora Avatar",
+    description:
+      "Create your on-chain health identity NFT. This avatar represents your verified health credentials on Sui.",
+    image: "/digital-health-avatar-nft.jpg",
+  },
+  {
+    icon: Gift,
+    title: "Earn rewards",
+    description:
+      "Get rewarded for contributing anonymized data to research, maintaining good health, or participating in studies.",
+    image: "/cryptocurrency-rewards-health-data.jpg",
   },
 ]
 
 export function HowItWorks() {
   return (
-    <section className="relative py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-24 px-4 bg-muted/20">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-balance">How It Works</h2>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-balance">How Selora Works</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty leading-relaxed">
-            Get started with Selora in four simple steps.
+            Get started in five simple steps and take control of your health data.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="space-y-24">
           {steps.map((step, index) => {
             const Icon = step.icon
-            return (
-              <div key={step.title} className="relative">
-                {/* Connector line */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-[60%] w-[80%] h-0.5 bg-border" />
-                )}
+            const isEven = index % 2 === 0
 
-                <div className="text-center space-y-4">
-                  <div className="relative inline-flex">
-                    <div className="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
-                      <Icon className="w-12 h-12 text-primary" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-heading font-bold">
-                      {index + 1}
-                    </div>
+            return (
+              <div
+                key={step.title}
+                className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 items-center`}
+              >
+                {/* Content */}
+                <div className="flex-1 space-y-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10">
+                    <Icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="font-heading text-xl font-bold">{step.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <span className="font-heading text-4xl font-bold text-muted-foreground/30">0{index + 1}</span>
+                      <h3 className="font-heading text-2xl md:text-3xl font-bold">{step.title}</h3>
+                    </div>
+                    <p className="text-lg text-muted-foreground leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+
+                {/* Image */}
+                <div className="flex-1">
+                  <div className="glass-card p-4 rounded-2xl">
+                    <img
+                      src={step.image || "/placeholder.svg"}
+                      alt={step.title}
+                      className="w-full h-auto rounded-xl"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
                 </div>
               </div>
             )

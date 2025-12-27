@@ -1,13 +1,16 @@
 "use client"
 
-import { useCurrentAccount, useConnectWallet, useDisconnectWallet } from "@mysten/dapp-kit"
+// Simple wallet connection component using Sui dApp Kit
+// Shows connected address or Connect button to open wallet picker modal
+
+import { ConnectModal, useCurrentAccount } from "@mysten/dapp-kit"
 import { Button } from "@/components/ui/button"
 import { Wallet } from "lucide-react"
+import { useState } from "react"
 
 export function WalletConnect() {
   const currentAccount = useCurrentAccount()
-  const { mutate: connect } = useConnectWallet()
-  const { mutate: disconnect } = useDisconnectWallet()
+  const [open, setOpen] = useState(false)
 
   if (currentAccount) {
     return (
@@ -17,17 +20,17 @@ export function WalletConnect() {
             {currentAccount.address.slice(0, 6)}...{currentAccount.address.slice(-4)}
           </p>
         </div>
-        <Button onClick={() => disconnect()} variant="outline" size="sm">
-          Disconnect
-        </Button>
       </div>
     )
   }
 
   return (
-    <Button onClick={() => connect({ wallet: { name: "Sui Wallet" } })} className="gap-2">
-      <Wallet className="w-4 h-4" />
-      Connect Wallet
-    </Button>
+    <>
+      <Button onClick={() => setOpen(true)} className="gap-2">
+        <Wallet className="w-4 h-4" />
+        Connect Wallet
+      </Button>
+      <ConnectModal trigger={null} open={open} onOpenChange={(isOpen) => setOpen(isOpen)} />
+    </>
   )
 }

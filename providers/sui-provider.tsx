@@ -3,6 +3,7 @@
 import { SuiClientProvider, WalletProvider } from "@mysten/dapp-kit"
 import { getFullnodeUrl } from "@mysten/sui/client"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { ThemeProvider } from "next-themes"
 import { useState, type ReactNode } from "react"
 
 const queryClient = new QueryClient()
@@ -18,7 +19,11 @@ export function SuiProvider({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={client}>
       <SuiClientProvider networks={networks} defaultNetwork="mainnet">
-        <WalletProvider autoConnect>{children}</WalletProvider>
+        <WalletProvider autoConnect>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+            {children}
+          </ThemeProvider>
+        </WalletProvider>
       </SuiClientProvider>
     </QueryClientProvider>
   )

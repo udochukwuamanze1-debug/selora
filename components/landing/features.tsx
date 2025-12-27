@@ -1,51 +1,47 @@
-import { Shield, Lock, Globe, Zap, FileCheck, Users } from "lucide-react"
+import { Shield, Lock, DollarSign, Heart, AlertCircle, FlaskConical } from "lucide-react"
 import { Card } from "@/components/ui/card"
 
 const features = [
   {
     icon: Shield,
-    title: "Data Sovereignty",
-    description:
-      "You own your health data. No centralized authority can access or control your records without your explicit permission.",
+    title: "Self-sovereign identity",
+    description: "Control your digital identity with cryptographic proof. Your health data belongs to you, always.",
   },
   {
     icon: Lock,
-    title: "Zero-Knowledge Privacy",
-    description:
-      "Share proof of medical conditions without revealing sensitive details using advanced cryptographic protocols.",
+    title: "Encrypted records",
+    description: "End-to-end encryption ensures your medical data is always private and secure on Walrus storage.",
   },
   {
-    icon: Globe,
-    title: "Decentralized Storage",
-    description:
-      "Health records stored on Walrus, Sui's decentralized storage network, ensuring data permanence and availability.",
+    icon: DollarSign,
+    title: "Ethical data monetization",
+    description: "Earn rewards by contributing anonymized data to research. You choose, you profit.",
   },
   {
-    icon: Zap,
-    title: "Instant Access",
-    description: "Access your complete medical history instantly from anywhere in the world with your Sui wallet.",
+    icon: Heart,
+    title: "Micro-insurance",
+    description: "Blockchain-powered micro-insurance products tailored to your health needs and lifestyle.",
   },
   {
-    icon: FileCheck,
-    title: "Immutable Records",
-    description:
-      "All medical records are cryptographically signed and stored on-chain, preventing tampering or unauthorized modifications.",
+    icon: AlertCircle,
+    title: "Emergency access",
+    description: "Grant trusted contacts emergency access to critical health information when it matters most.",
   },
   {
-    icon: Users,
-    title: "Interoperable System",
-    description: "Seamlessly share data across providers, labs, and insurers with granular permission controls.",
+    icon: FlaskConical,
+    title: "Research participation",
+    description: "Contribute to medical research while maintaining privacy through zero-knowledge proofs.",
   },
 ]
 
 export function Features() {
   return (
-    <section className="relative py-24 px-4 bg-muted/30">
+    <section className="relative py-24 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-4 mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-balance">Why Choose Selora</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty leading-relaxed">
-            Built on cutting-edge blockchain technology to revolutionize healthcare data management.
+            Built with privacy-first principles and cutting-edge blockchain technology.
           </p>
         </div>
 
@@ -53,8 +49,8 @@ export function Features() {
           {features.map((feature) => {
             const Icon = feature.icon
             return (
-              <Card key={feature.title} className="glass-card p-6 space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Card key={feature.title} className="glass-card glass-card-hover p-6 space-y-4 group">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-heading text-xl font-bold">{feature.title}</h3>

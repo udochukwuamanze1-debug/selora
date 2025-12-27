@@ -16,7 +16,7 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: "Selora - Decentralized Health Platform",
-  description: "Own your health data. Built on Sui blockchain with zero-knowledge privacy.",
+  description: "Your health. Your data. Your terms. Built on Sui blockchain.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${bricolageGrotesque.variable} ${openSans.variable} font-sans antialiased`}>
         <SuiProvider>{children}</SuiProvider>
         <Analytics />
